@@ -17,6 +17,13 @@ import { CalendarEvent } from "@/lib/types";
 import { ViewToggle } from "./view-toggle";
 import { cn } from "@/lib/utils";
 
+
+
+/**
+ * 
+ * @return <CalendarGrid />
+ * @return <CalendarWeek />
+ */
 export function CalendarView() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [view, setView] = useState<"month" | "week" | "day" | "agenda" | "timeline">("month");

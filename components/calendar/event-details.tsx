@@ -8,7 +8,7 @@ import { Trash2 } from "lucide-react";
 
 interface EventDetailsProps {
   event: CalendarEvent;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 export function EventDetails({ event, onClose }: EventDetailsProps) {
@@ -16,7 +16,7 @@ export function EventDetails({ event, onClose }: EventDetailsProps) {
 
   const handleDelete = () => {
     deleteEvent(event.id);
-    onClose();
+    onClose?.();
   };
 
   return (

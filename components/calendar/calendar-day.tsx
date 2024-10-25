@@ -5,10 +5,10 @@ import { CalendarEvent } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-interface CalendarDayProps {
+export interface CalendarDayProps {
   date: Date;
   events: CalendarEvent[];
-  onEventClick: (event: CalendarEvent) => void;
+  onEventClick?: (event: CalendarEvent) => void;
 }
 
 export function CalendarDay({ date, events, onEventClick }: CalendarDayProps) {
@@ -19,7 +19,7 @@ export function CalendarDay({ date, events, onEventClick }: CalendarDayProps) {
     const start = new Date(event.start);
     const end = new Date(event.end);
     const dayStart = startOfDay(start);
-    
+
     const topOffset = (differenceInMinutes(start, dayStart) / 60) * 4;
     const height = (differenceInMinutes(end, start) / 60) * 4;
 
@@ -70,7 +70,7 @@ export function CalendarDay({ date, events, onEventClick }: CalendarDayProps) {
                   "cursor-pointer"
                 )}
                 style={getEventStyle(event)}
-                onClick={() => onEventClick(event)}
+                onClick={() => onEventClick?.(event)}
               >
                 <div className="font-medium text-sm">{event.title}</div>
                 <div className="text-xs text-muted-foreground">
